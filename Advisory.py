@@ -43,4 +43,4 @@ def get_reminder_msg(context):
 
     context.bot.send_message(context.job.context, text = reminder, parse_mode = 'Html')
     context.bot.send_message(context.job.context, text = warning, parse_mode = 'Html')
-    return  # [reminder, warning]
+    return  
