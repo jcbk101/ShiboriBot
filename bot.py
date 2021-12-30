@@ -50,7 +50,25 @@ def start_command(update, context):
 # ------------------------------------------
 def help_command(update, context):
     user = update.effective_user
-    update.message.reply_text('Have you tried Google? 🧐')
+    # update.message.reply_text('Have you tried Google? 🧐')
+    helper = "The follow commands are supported:\n" \
+             "\n" \
+             "/buy - Info on how you can buy SNT\n" \
+             "/mc - SNT Market CAP info\n" \
+             "/ninja - SNT founder's twitter\n" \
+             "/vote - Vote for Shib Ninja Token\n" \
+             "/contract - Links to contracts\n" \
+             "/rewards - Rewards details\n" \
+             "/chart - Links to chart info\n" \
+             "/twitter - Official Shibori Clan twitter\n" \
+             "/website - Official Shib Ninja Token website\n" \
+             "/reddit - Official reddit\n" \
+             "/discord - Official discord\n" \
+             "/social - SNT Official social media links\n" \
+             "/info - General Shib Ninja Token info\n" \
+             "/donate - Donate to the SNT project\n" \
+             "/roadmap - SNT roadmap info\n"
+    update.message.reply_text(helper)
 
 
 # ------------------------------------------
@@ -195,21 +213,6 @@ def clear_members(context):
     global notAdmin
     notAdmin.clear()
     return
-    """    was_member, is_member = True
-        cause_name = update.chat_member.from_user.mention_html()
-        member_name = update.chat_member.new_chat_member.user.mention_html()
-
-        if not was_member and is_member:
-            update.effective_chat.send_message(
-                f"{member_name} was added by {cause_name}. Welcome!",
-                parse_mode = ParseMode.HTML,
-            )
-        elif was_member and not is_member:
-            update.effective_chat.send_message(
-                f"{member_name} is no longer with us. Thanks a lot, {cause_name} ...",
-                parse_mode = ParseMode.HTML,
-            )
-    """
 
 
 # ------------------------------------------
@@ -258,12 +261,12 @@ def main():
                   context = Keys.CHAT_ID
                   )
 
-    # updater.start_polling(allowed_updates = Update.ALL_TYPES)
-    updater.start_webhook(listen = "0.0.0.0",
-                          port = int(PORT),
-                          url_path = Keys.BOT_KEY,
-                          webhook_url = "https://shibori-bot.herokuapp.com/" + Keys.BOT_KEY
-                          )
+    updater.start_polling(allowed_updates = Update.ALL_TYPES)
+    # updater.start_webhook(listen = "0.0.0.0",
+    #                      port = int(PORT),
+    #                      url_path = Keys.BOT_KEY,
+    #                      webhook_url = "https://shibori-bot.herokuapp.com/" + Keys.BOT_KEY
+    #                      )
     updater.idle()
 
 

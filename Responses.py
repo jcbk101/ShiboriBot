@@ -83,9 +83,7 @@ def sample_responses(input_text, update):
     #        return message + buy
 
     # -----------------------------------------
-    #
     # Info
-    #
     # -----------------------------------------
     if ("/info") in user_message:
         message = "🤬Tired of being scammed?😩\n\n" \
@@ -98,7 +96,29 @@ def sample_responses(input_text, update):
                   " •Reflections: 5%\n" \
                   " •Total Taxes: 15%"
         update.message.reply_text(message, parse_mode = 'Html', disable_web_page_preview = True)
+        # All handled here
+        return
 
+    # -----------------------------------------
+    # Rewards
+    # -----------------------------------------
+    if ("/rewards") in user_message:
+        message = "💥🥷<b><u>Rewards</u></b>!🥷💥\n\n" \
+                  "5% Rewards in SHIB!\n" \
+                  "\n" \
+                  "5% of every transaction is taken and\n" \
+                  "reflected back to the holders in #SHIB!\n" \
+                  "\n" \
+                  "This is REAL $SHIB you can trade at any\n" \
+                  "time for BNB!\n" \
+                  "\n" \
+                  "[These Rewards are AUTO claimed when the Dividends Wallet has reached its minimum fill point for distribution.]\n" \
+                  "\n" \
+                  "Keep your $SNT and make your gains with SHIB, adding a little extra skin in the game in our favorite Dog Coin!\n" \
+                  "\n" \
+                  "⚠<b><u>Note:</u></b>⚠\n" \
+                  "Rewards REQUIRE volume (Up or Down) to be distributed, this is why initial marketing funds are mandatory. If there is little volume, there are little rewards. Patience."
+        update.message.reply_text(message, parse_mode = 'Html', disable_web_page_preview = True)
         # All handled here
         return
 
@@ -109,12 +129,32 @@ def sample_responses(input_text, update):
         return "https://shibninja.com/road-map"
 
     # -----------------------------------------
-    #
+    # Chart
+    # -----------------------------------------
+    if ("/chart") in user_message:
+        chart = "<b>SNT/BSC:</b> <a href ='https://www.dextools.io/app/bsc/pair-explorer/0xbd9f1171322fce907d8bc3406d867c16ba916c3c'>DexTools</a>\n" \
+                "<b>SNT/BSC:</b> <a href ='https://poocoin.app/tokens/0x97329bce201d86bbcbeebbb3b03256abdf7b7de6'>Poocoin</a>\n" \
+                "<b>SNT/BSC:</b> <a href ='https://coinmarketcap.com/currencies/shib-ninja-token/'>Coin Market Cap</a>\n"
+
+        update.message.reply_text(chart, parse_mode = 'Html', disable_web_page_preview = True)
+        return
+
+    # -----------------------------------------
+    # Chart
+    # -----------------------------------------
+    if ("/contract") in user_message:
+        chart = "🥷<b><u>Contract</u></b>🥷\n\n" \
+                "Name: <a href = 'https://www.shibninja.com/'>Shib Ninja Token</a>\n\n" \
+                "[SNT]: <a href = 'https://bscscan.com/address/0x97329bce201d86bbcbeebbb3b03256abdf7b7de6'>0x97329bce201d86bbcbeebbb3b03256abdf7b7de6</a>\n" \
+                "[SHIB]: <a href = 'https://bscscan.com/address/0x2859e4544c4bb03966803b044a93563bd2d0dd4d'>0x2859e4544c4bb03966803b044a93563bd2d0dd4d</a>\n"
+        update.message.reply_text(chart, parse_mode = 'Html', disable_web_page_preview = True)
+        return
+
+    # -----------------------------------------
     # Voting sites
-    #
     # -----------------------------------------
     if ("/vote") in user_message:
-        voter = "💥💥🥷<b>Vote/Action</b>🥷💥💥\n\n" \
+        voter = "💥💥🥷<b><u>Vote/Action</u></b>🥷💥💥\n\n" \
                 "👇👇👇VOTE👇👇👇\n" \
                 "✅<a href = 'https://coinmerge.io'>CoinMerge</a> [Vote]\n" \
                 "✅<a href = 'https://coinsniper.net/coin/22578'>Coin Sniper</a> [Vote]\n" \
@@ -130,7 +170,6 @@ def sample_responses(input_text, update):
                 "member of the Shibori Clan!🙏"
         #
         update.message.reply_text(voter, parse_mode = 'Html', disable_web_page_preview = True)
-
         # All handled here
         return
 
