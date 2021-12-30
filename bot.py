@@ -252,7 +252,7 @@ def main():
     dp.add_error_handler(error)
 
     # Start the warnings now!
-    job.run_repeating(Advisory.get_reminder_msg, 180, context = Keys.TEST_ID)
+    job.run_repeating(Advisory.get_reminder_msg, 180, context = Keys.CHAT_ID)
 
     # Clear member IDs who try and chat to the bot directly!
     job.run_daily(clear_members,
