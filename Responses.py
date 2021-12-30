@@ -5,7 +5,8 @@
 #
 # -----------------------------------------
 def sample_responses(input_text, update):
-
+    user_message = str(input_text).lower()
+    
     # -----------------------------------------
     #
     #
