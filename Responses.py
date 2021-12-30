@@ -56,9 +56,6 @@ def Shrink(number, isDecimal):
 # -----------------------------------------
 def sample_responses(input_text, update):
     user_message = str(input_text).lower()
-    # bot = telegram.Bot(token=Keys.API_KEY)
-    bot = update.effective_user.bot;
-    chat_id = update.effective_chat.id
 
     if ("/buy") in user_message:
         message = "💫🥷<b>Buy SNT</b>🥷💫\n\n" \
@@ -74,13 +71,10 @@ def sample_responses(input_text, update):
                   "0x97329Bce201D86bbCBeebBB3B03256ABDF7b7De6\n\n"
 
         buy = "💵Ready to buy $SNT?💵\n\n👇👇Click here👇👇\nhttps://shibninja.com/buy-%24snt"
-
         update.message.reply_text(message + buy, parse_mode = 'Html', disable_web_page_preview = True)
-        # update.effective_user.bot.sendMessage(text="Thank you", chat_id=update.effective_chat.id)
 
         # All handled here
         return
-    #        return message + buy
 
     # -----------------------------------------
     # Info
@@ -133,7 +127,7 @@ def sample_responses(input_text, update):
     # -----------------------------------------
     if ("/chart") in user_message:
         chart = "<b>SNT/BSC:</b> <a href ='https://www.dextools.io/app/bsc/pair-explorer/0xbd9f1171322fce907d8bc3406d867c16ba916c3c'>DexTools</a>\n" \
-                "<b>SNT/BSC:</b> <a href ='https://poocoin.app/tokens/0x97329bce201d86bbcbeebbb3b03256abdf7b7de6'>Poocoin</a>\n" \
+                f"<b>SNT/BSC:</b> <a href ='https://poocoin.app/tokens/{Keys.SNT_CONTRACT}'>Poocoin</a>\n" \
                 "<b>SNT/BSC:</b> <a href ='https://coinmarketcap.com/currencies/shib-ninja-token/'>Coin Market Cap</a>\n"
 
         update.message.reply_text(chart, parse_mode = 'Html', disable_web_page_preview = True)
@@ -145,7 +139,7 @@ def sample_responses(input_text, update):
     if ("/contract") in user_message:
         chart = "🥷<b><u>Contract</u></b>🥷\n\n" \
                 "Name: <a href = 'https://www.shibninja.com/'>Shib Ninja Token</a>\n\n" \
-                "[SNT]: <a href = 'https://bscscan.com/address/0x97329bce201d86bbcbeebbb3b03256abdf7b7de6'>0x97329bce201d86bbcbeebbb3b03256abdf7b7de6</a>\n" \
+                f"[SNT]: <a href = 'https://bscscan.com/address/{Keys.SNT_CONTRACT}'>{Keys.SNT_CONTRACT}</a>\n" \
                 "[SHIB]: <a href = 'https://bscscan.com/address/0x2859e4544c4bb03966803b044a93563bd2d0dd4d'>0x2859e4544c4bb03966803b044a93563bd2d0dd4d</a>\n"
         update.message.reply_text(chart, parse_mode = 'Html', disable_web_page_preview = True)
         return
@@ -204,13 +198,11 @@ def sample_responses(input_text, update):
 
         team_1 = "<b>Twitter Team:</b>\n<a href ='https://twitter.com/RealShibNinja'>RealShibNinja</a> \n<a href = 'https://twitter.com/ShibSoldier'>ShibSoldier</a> \n<a href = 'https://twitter.com/CNelson580'>CNelson580</>\n"
         team_2 = "<a href = 'https://twitter.com/OlgaNel16824866'>OlgaNel16824866</a> \n<a href = 'https://twitter.com/CodeIsLife101'>CodeIsLife</a>"
-        # https: // twitter.com / Bumitheus
         update.message.reply_text(header + social + team_1 + team_2, parse_mode = 'Html',
                                   disable_web_page_preview = True)
-        # return header + social + team_1 + team_2
         return
 
-        # -----------------------------------------
+    # -----------------------------------------
     #
     # Return the Supplies and market cap value
     #
@@ -257,5 +249,5 @@ def sample_responses(input_text, update):
                     total, burn, circ, mcap)
                 return str(mc_string)
 
-    # return "I do not understand you."
+    # I do not understand you.
     return None
