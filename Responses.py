@@ -88,13 +88,13 @@ def sample_responses(input_text, update):
     #
     # -----------------------------------------
     if ("/info") in user_message:
-        message = "😩Tired of being scammed?🤬\n\n" \
-                  "🥷Join Clan Shibori!🥷🥷🥷🥷\n\n" \
+        message = "🤬Tired of being scammed?😩\n\n" \
+                  "🥷Join the Shibori Clan!🥷🥷🥷🥷\n\n" \
                   "We're creating a SAFE BSC community for ALL!\n\n" \
                   "•Shib Ninja Token - 12/07/21 [$SNT]\n" \
                   "•Website - https://www.ShibNinja.com\n\n" \
                   "Tokenomics - Hyper Deflationary & Reflective!\n\n" \
-                  "(25% Taxes! w/ 10% Reflections)"
+                  "(15% Taxes! w/ 5% Reflections)"
         update.message.reply_text(message, parse_mode = 'Html', disable_web_page_preview = True)
 
         # All handled here
@@ -169,7 +169,7 @@ def sample_responses(input_text, update):
         # return header + social + team_1 + team_2
         return
 
-        # -----------------------------------------
+    # -----------------------------------------
     #
     # Return the Supplies and market cap value
     #
