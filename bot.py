@@ -159,7 +159,7 @@ def advisor_start(update, context):
     admins = update.effective_user.bot.get_chat_member(chat_id, user_id)
     if admins and admins.status in [ 'creator', 'administrator' ]:
         if not job:
-            context.job_queue.run_repeating(Advisory.get_reminder_msg, 1800, context = chat_id)
+            context.job_queue.run_repeating(Advisory.get_reminder_msg, 180, context = chat_id)
     else:
         # Restrict private messaging
         # save the user for a little
@@ -252,7 +252,7 @@ def main():
     dp.add_error_handler(error)
 
     # Start the warnings now!
-    job.run_repeating(Advisory.get_reminder_msg, 1800, context = Keys.TEST_ID)
+    job.run_repeating(Advisory.get_reminder_msg, 180, context = Keys.TEST_ID)
 
     # Clear member IDs who try and chat to the bot directly!
     job.run_daily(clear_members,
