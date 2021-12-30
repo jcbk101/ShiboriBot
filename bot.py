@@ -14,9 +14,11 @@ bot.
 """
 import datetime
 
+import Advisory
 import Constants as Keys
 import Responses as Res
 import logging
+from timeit import default_timer as timer
 
 import pytz
 from telegram.ext import *
@@ -29,12 +31,11 @@ logger = logging.getLogger(__name__)
 # Restrictions
 global_msg_test = False
 global_msg_count = 0
-global_timer = 0
+global_timer = timer()
 notAdmin = [ ]
 
 # YEP, SECRETS!
 PORT = int(os.environ.get('PORT', 5000))
-
 
 
 # ------------------------------------------
@@ -59,6 +60,20 @@ def help_command(update, context):
     update.message.reply_text('Have you tried Google?')
 
 
+# ------------------------------------------
+#
+# Re-enable messages
+#
+# ------------------------------------------
+def message_queue(context):
+    global global_msg_test
+    global global_msg_count
+    global global_timer
+
+    global_msg_test = False
+    global_msg_count = 0
+    global_timer = timer()
+    return
 
 
 # ------------------------------------------
@@ -114,6 +129,90 @@ def error(update, context):
     print(f"Update {update}\n caused an error: {context.error}")
 
 
+# ------------------------------------------
+#
+# Start auto warning updates
+#
+# ------------------------------------------
+def advisor_start(update, context):
+    chat_id = update.message.chat_id
+    user_id = update.effective_user.id
+    global notAdmin
+
+    # Check for Admins
+    admins = update.effective_user.bot.get_chat_member(chat_id, user_id)
+    if admins and admins.status in [ 'creator', 'administrator' ]:
+        # if context.job_queue.scheduler.running:
+        #    context.job_queue.start()
+        # else:
+        context.job_queue.run_repeating(Advisory.get_reminder_msg, 1800, context = chat_id)
+    else:
+        # Restrict private messaging
+        # save the user for a little
+        if user_id not in notAdmin:
+            update.message.reply_text("I don't respond here")
+            notAdmin.append(user_id)
+            notAdmin = list(set(notAdmin))
+        return
+
+
+# ------------------------------------------
+#
+# Stop auto warning updates
+#
+# ------------------------------------------
+def advisory_stop(update, context):
+    global notAdmin
+
+    if context.job_queue.scheduler.running:
+        chat_id = update.message.chat_id
+        bot = update.effective_user.bot
+        user_id = update.effective_user.id
+
+        # Check for Admins
+        admins = update.effective_user.bot.get_chat_member(chat_id, user_id)
+        if admins and admins.status in [ 'creator', 'administrator' ]:
+            # bot.send_message(chat_id = chat_id, text = 'Stopped!')
+            # context.job_queue.stop()
+            current_jobs = context.job_queue.jobs()
+            if current_jobs:
+                for job in current_jobs:
+                    job.schedule_removal()
+        else:
+            # Restrict private messaging
+            # save the user for a little
+            if user_id not in notAdmin:
+                update.message.reply_text("I don't respond here")
+                notAdmin.append(user_id)
+                notAdmin = list(set(notAdmin))
+            return
+
+
+# ------------------------------------------
+#
+# Used only for 'notAdmin' list management
+#
+# ------------------------------------------
+def clear_members(context):
+    global notAdmin
+    notAdmin.clear()
+    return
+    """    was_member, is_member = True
+        cause_name = update.chat_member.from_user.mention_html()
+        member_name = update.chat_member.new_chat_member.user.mention_html()
+
+        if not was_member and is_member:
+            update.effective_chat.send_message(
+                f"{member_name} was added by {cause_name}. Welcome!",
+                parse_mode = ParseMode.HTML,
+            )
+        elif was_member and not is_member:
+            update.effective_chat.send_message(
+                f"{member_name} is no longer with us. Thanks a lot, {cause_name} ...",
+                parse_mode = ParseMode.HTML,
+            )
+    """
+
 
 # ------------------------------------------
 #
@@ -133,21 +232,40 @@ def main():
     dp.add_handler(CommandHandler('help', help_command))
 
     # --------------------------------------------
+    # Auto message handler: Warnings, broadcast
+    # --------------------------------------------
+    dp.add_handler(CommandHandler('advise_on', advisor_start))
+    dp.add_handler(CommandHandler('advise_off', advisory_stop))
+
+    # --------------------------------------------
     # Default messages handler
     # --------------------------------------------
     dp.add_handler(MessageHandler(Filters.text, handle_message))
+
+    # Handle members joining/leaving chats.
+    # dp.add_handler(ChatMemberHandler(clear_members, ChatMemberHandler.CHAT_MEMBER))
 
     # --------------------------------------------
     # Error handler
     # --------------------------------------------
     dp.add_error_handler(error)
 
+    # Start the warnings now!
+    job.run_repeating(Advisory.get_reminder_msg, 1800, context = Keys.TEST_ID)
 
-    # updater.start_polling(allowed_updates = Update.ALL_TYPES)
-    updater.start_webhook(listen = "0.0.0.0",
-                          port = int(PORT),
-                          url_path = Keys.BOT_KEY,
-                          webhook_url = "https://shibori-bot.herokuapp.com/" + Keys.BOT_KEY)
+    # Clear member IDs who try and chat to the bot directly!
+    job.run_daily(clear_members,
+                  datetime.time(hour = 7, minute = 00, tzinfo = pytz.timezone('US/Eastern')),
+                  days = (0, 1, 2, 3, 4, 5, 6),
+                  context = Keys.CHAT_ID
+                  )
+
+    updater.start_polling(allowed_updates = Update.ALL_TYPES)
+    # updater.start_webhook(listen = "0.0.0.0",
+    #                       port = int(PORT),
+    #                       url_path = Keys.BOT_KEY,
+    #                       webhook_url = "https://shibori-bot.herokuapp.com/" + Keys.BOT_KEY
+    #                       )
     updater.idle()
 
 
