@@ -132,7 +132,7 @@ def handle_message(update, context):
 
 # ------------------------------------------
 #
-# Error handler
+# Error handler.
 #
 # ------------------------------------------
 def error(update, context):
