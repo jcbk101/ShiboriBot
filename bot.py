@@ -36,16 +36,7 @@ notAdmin = [ ]
 
 # YEP, SECRETS!
 PORT = int(os.environ.get('PORT', 5000))
-Keys.BOT_KEY = os.environ[ "BOT_ID" ]
-Keys.BSC_KEY = os.environ[ "BSC_ID" ]
-Keys.CHAT_ID = os.environ[ "SNT_ID" ]
-Keys.TEST_ID = os.environ[ "TEST_ID" ]
-Keys.CMC_KEY = os.environ[ "CMC_ID" ]
-Keys.SNT_CONTRACT = os.environ[ "SNT_CONTRACT" ]
-Keys.SNT_BURNED = os.environ[ "SNT_BURNED" ]
-Keys.SNT_MARKETING = os.environ[ "SNT_MARKETING" ]
-Keys.SNT_TOURNAMENT = os.environ[ "TEST_TOURNAMENT" ]
-Keys.SNT_DEVELOPER = os.environ[ "SNT_DEV" ]
+
 
 
 # ------------------------------------------
