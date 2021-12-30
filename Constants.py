@@ -1,19 +1,5 @@
 import os
 
-"""
-BOT_KEY = ''
-BSC_KEY = ''
-CMC_KEY = ''
-
-SNT_CONTRACT = ''
-SNT_BURNED = ''
-SNT_DEVELOPER = ''
-SNT_MARKETING = ''
-SNT_TOURNAMENT = ''
-
-CHAT_ID = 0
-TEST_ID = 0
-"""
 BOT_KEY = os.environ[ "BOT_ID" ]
 BSC_KEY = os.environ[ "BSC_ID" ]
 CHAT_ID = int(os.environ[ "SNT_ID" ])
