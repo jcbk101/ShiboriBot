@@ -274,7 +274,7 @@ def main():
     updater.start_webhook(listen = "0.0.0.0",
                           port = int(PORT),
                           url_path = Keys.BOT_KEY)
-    updater.bot.setWebhook('https://your-app-name.herokuapp.com/' + Keys.BOT_KEY)
+    updater.bot.setWebhook('https://shibori-bot.herokuapp.com/' + Keys.BOT_KEY)
     updater.idle()
 
 
