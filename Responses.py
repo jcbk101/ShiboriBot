@@ -89,7 +89,7 @@ def sample_responses(input_text, update):
     # -----------------------------------------
     if ("/info") in user_message:
         message = "🤬Tired of being scammed?😩\n\n" \
-                  "🥷Join the Shibori Clan!🥷🥷🥷🥷\n\n" \
+                  "💥🥷Join the Shibori Clan!🥷💥\n\n" \
                   "We're creating a SAFE BSC community for ALL!\n\n" \
                   "•Shib Ninja Token - 12/07/21 [$SNT]\n" \
                   "•Website - https://www.ShibNinja.com\n\n" \
