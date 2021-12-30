@@ -129,9 +129,8 @@ def handle_message(update, context):
             notAdmin = list(set(notAdmin))
         return
 
-    # ------------------------------------------
 
-
+# ------------------------------------------
 #
 # Error handler
 #
