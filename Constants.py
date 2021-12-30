@@ -1,0 +1,13 @@
+BOT_KEY = ''
+BSC_KEY = ''
+CMC_KEY = ''
+
+SNT_CONTRACT = ''
+SNT_BURNED = ''
+SNT_DEVELOPER = ''
+SNT_MARKETING = ''
+SNT_TOURNAMENT = ''
+
+CHAT_ID = 0
+TEST_ID = 0
+
