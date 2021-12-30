@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 # Restrictions
 global_msg_test = False
 global_msg_count = 0
-global_timer = timer()
+global_timer = 0
 notAdmin = [ ]
 
 # YEP, SECRETS!
