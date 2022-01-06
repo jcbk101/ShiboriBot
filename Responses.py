@@ -158,7 +158,7 @@ def sample_responses(input_text, update):
                 "✅<a href = 'https://gemhunters.net/coin/shib-ninja-token/'>Gem Hunters</a> [Vote]\n" \
                 "✅<a href = 'https://coindiscovery.app/coin/shib-ninja-token'>Coin Discovery</a> [Vote]\n" \
                 "✅<a href = 'https://coinhunt.cc/coin/1903225630'>Coin Hunt</a> [Vote]\n\n" \
-                "✅<a href = 'https://coinmooner.com/coin/9471'>CoinMooner</a> [Vote]\n\n" \        
+                "✅<a href = 'https://coinmooner.com/coin/9471'>CoinMooner</a> [Vote]\n\n" \
                 "👇SEARCH & COMMENT👇\n" \
                 "✅<a href = 'https://twitter.com/search?q=($SNT OR #ShibNinjaToken OR @Shibori Or #ShiboriClan)&src=typed_query&f=live'>Twitter Search</a>\n\n" \
                 "Thank you for being an active\n" \
