@@ -15,9 +15,9 @@ def get_reminder_msg(context):
                "Sacmmers will do what ever the can to steal your\n" \
                "crypto from you. A loss of all funds could be\n" \
                "devastating. Be sure to do everything in your power\n" \
-               "to protect what is yours!\n" \
-               "\n" \
-               "🥷<b><u>Helpful Tips:</u></b>🥷\n" \
+               "to protect what is yours!"
+               
+     warning = "🥷<b><u>Helpful Tips:</u></b>🥷\n" \
                "Update your security settings to prevent you from being\n" \
                "added to potentially harmful telegram groups. That action\n" \
                "could lead to your crypto being put at risk of theft!\n" \
@@ -39,5 +39,5 @@ def get_reminder_msg(context):
                "\n   - Shibori Clan Dojo Staff"
 
     context.bot.send_message(context.job.context, text = reminder, parse_mode = 'Html')
-    # context.bot.send_message(context.job.context, text = warning, parse_mode = 'Html')
+    context.bot.send_message(context.job.context, text = warning, parse_mode = 'Html')
     return
