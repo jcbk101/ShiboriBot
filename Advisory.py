@@ -9,15 +9,14 @@ def get_reminder_msg(context):
                "team member, IE: Admin, Dev, MOD, official Support\n" \
                "or Help person, it is more than likely a scam\n" \
                "attempt and you should ignore them and block immediately!\n" \
-               "\n" \
-               "🚨<b><u>Please Be aware!</u></b>🚨\n" \
-               "\n" \
-               "Sacmmers will do what ever the can to steal your\n" \
-               "crypto from you. A loss of all funds could be\n" \
-               "devastating. Be sure to do everything in your power\n" \
-               "to protect what is yours!"
                
-    warning = "🥷<b><u>Helpful Tips:</u></b>🥷\n" \
+    warning = "🚨<b><u>Please Be aware!</u></b>🚨\n" \
+              "\n" \
+              "Sacmmers will do what ever the can to steal your\n" \
+              "crypto from you. A loss of all funds could be\n" \
+              "devastating. Be sure to do everything in your power\n" \
+              "to protect what is yours!\n\n" \
+              "🥷<b><u>Helpful Tips:</u></b>🥷\n" \
               "Update your security settings to prevent you from being\n" \
               "added to potentially harmful telegram groups. That action\n" \
               "could lead to your crypto being put at risk of theft!\n" \
