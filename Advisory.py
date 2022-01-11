@@ -12,7 +12,7 @@ def get_reminder_msg(context):
                
     warning = "🚨<b><u>Please Be aware!</u></b>🚨\n" \
               "\n" \
-              "Sacmmers will do what ever the can to steal your\n" \
+              "Scammers will do what ever they can to steal your\n" \
               "crypto from you. A loss of all funds could be\n" \
               "devastating. Be sure to do everything in your power\n" \
               "to protect what is yours!\n\n" \
