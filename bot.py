@@ -159,7 +159,7 @@ def advisor_start(update, context):
     admins = update.effective_user.bot.get_chat_member(chat_id, user_id)
     if admins and admins.status in [ 'creator', 'administrator' ]:
         if not job:
-            context.job_queue.run_repeating(Advisory.get_reminder_msg, 2700, context = Keys.CHAT_ID)
+            context.job_queue.run_repeating(Advisory.get_reminder_msg, 18000, context = Keys.CHAT_ID)
     else:
         # Restrict private messaging
         # save the user for a little
@@ -186,7 +186,7 @@ def advisory_stop(update, context):
         # Check for Admins
         admins = update.effective_user.bot.get_chat_member(chat_id, user_id)
         if admins and admins.status in [ 'creator', 'administrator' ]:
-            # bot.send_message(chat_id = chat_id, text = 'Stopped!')
+            # bot.send_message(chat_id = chat_id, text = 'Stopped all advisory!')
             # context.job_queue.stop()
             current_jobs = context.job_queue.jobs()
             if current_jobs:
